@@ -4,7 +4,7 @@
   "description": "this a shopping app",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,14 @@
   },
   "homepage": "https://github.com/123Jonne/shopping#readme",
   "devDependencies": {
+    "crypto": "^1.0.1",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "mysql": "^2.15.0",
+    "q": "^1.5.1",
     "serve-favicon": "^2.4.5"
+  },
+  "dependencies": {
+    "mysql": "^2.15.0"
   }
 }

@@ -1,6 +1,6 @@
 angular.module('app')
 .config(['$stateProvider','$urlRouterProvider','$locationProvider',function($stateProvider,$urlRouterProvider,$locationProvider){
-	$urlRouterProvider.otherwise('/register');
+	$urlRouterProvider.otherwise('/login');
 
 	$stateProvider
 	.state('main',{
@@ -24,6 +24,17 @@ angular.module('app')
 				resolve: {
 					des: ['$ocLazyLoad', function ($ocLazyLoad) {
 						return $ocLazyLoad.load('register');
+					}]
+				}
+	})
+	.state('login',{
+		url:'/login',
+		templateUrl:'/templates/login/login.html',
+		cache: false,
+		controller:'loginController',
+				resolve: {
+					des: ['$ocLazyLoad', function ($ocLazyLoad) {
+						return $ocLazyLoad.load('login');
 					}]
 				}
 	})

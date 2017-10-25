@@ -1,27 +1,37 @@
 angular.module('app')
-.factory('utils',['$ionicPopup',function($ionicPopup){
+.factory('utils',['$ionicPopup','$ionicLoading',function($ionicPopup, $ionicLoading){
 var u={
-	tips:{
-		showTips:function(msg,scope){
+	tips: {
 
-	var tips=$ionicPopup.show({
+				showTips: function (msg, scope) {
+					var tips = $ionicPopup.show({
+						template: '<div style="text-align: center;">' + msg + '</div>',
+						title: '提示消息',
+						scope: scope,
+						buttons: [
+							{
+								text: '确认',
+								type: 'button-assertive',
+								onTap: function () {
+									tips.close();
+								}
+							}
+						]
+					});
+				},
 
-			template:'<div style="text-align:center">'+msg+'</div>',
-			title:'提示消息',
-			scope:scope,
-			buttons:[
-			{
-				text:'确认',
-				type:'button-assertive',
-				onTap:function(){
-                 tips.close();
+				showLoadTips: function () {
+    			$ionicLoading.show({
+    				noBackdrop: true,
+      			template: '<ion-spinner icon="lines" class="spinner-assertive"></ion-spinner>'
+    			});
+				},
+
+				hideLoadTips: function () {
+					$ionicLoading.hide();
 				}
-			}]
 
-		});
-	}
-	},
-	
+			},
 //验证表单模块
 
 validForm:{

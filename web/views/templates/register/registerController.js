@@ -12,13 +12,16 @@ angular.module('app')
 			if (!validRegister()) {
 				return;
 			}
-
+			utils.tips.showLoadTips();
 			API.fetchPost('/register', $scope.data)
 				.then(function (data) {
-					console.log('data ==> ', data);
+					console.log('data ==>32213212313213 ', data);
+					utils.tips.hideLoadTips();
+					utils.tips.showTips(data.data.msg);
 				})
 				.catch(function (err) {
-					console.log('err ==> ', err);
+					utils.tips.hideLoadTips();
+					utils.tips.showTips(data.data.msg);
 				})
 
 		}
