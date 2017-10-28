@@ -1,7 +1,7 @@
 angular.module('app')
 	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-		$urlRouterProvider.otherwise('/login');
+		$urlRouterProvider.otherwise('/main/home');
 
 		$stateProvider
 			.state('main', {
@@ -22,6 +22,17 @@ angular.module('app')
 			.state('main.find', {
 				url: '/main/find',
 				templateUrl: '/templates/find/find.html'
+			})
+			.state('main.shopcart', {
+				url: '/main/shopcart',
+				templateUrl: '/templates/shopcart/shopcart.html',
+				controller: 'shopcartController',
+				cache: false,
+				resolve: {
+					des: ['$ocLazyLoad', function ($ocLazyLoad) {
+						return $ocLazyLoad.load('main.shopcart');
+					}]
+				}
 			})
 			.state('register', {
 				url: '/register',
@@ -46,13 +57,22 @@ angular.module('app')
 				}
 			})
 			.state('details', {
-				url: '/details',
+				url: '/details/:id',
 				templateUrl: '/templates/details/details.html',
-				cache: false,
 				controller: 'detailsController',
 				resolve: {
 					des: ['$ocLazyLoad', function ($ocLazyLoad) {
 						return $ocLazyLoad.load('details');
+					}]
+				}
+			})
+			.state('comment', {
+				url: '/comment/:id',
+				templateUrl: '/templates/comment/comment.html',
+				controller: 'commentController',
+				resolve: {
+					des: ['$ocLazyLoad', function ($ocLazyLoad) {
+						return $ocLazyLoad.load('comment');
 					}]
 				}
 			})

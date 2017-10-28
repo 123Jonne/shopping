@@ -37,12 +37,26 @@ app.config(["$provide", "$compileProvider", "$controllerProvider", "$filterProvi
 		 				'/templates/home/home.css'
 		 			]
 		 		},
+		 		{
+		 			name: 'main.shopcart',
+		 			files: [
+		 				'/templates/shopcart/shopcartController.js',
+		 				'/templates/shopcart/shopcart.css'
+		 			]
+		 		},
 		 		
 		 		{
 		 			name: 'details',
 		 			files: [
 		 				'/templates/details/detailsController.js',
 		 				'/templates/details/details.css'
+		 			]
+		 		},
+		 		{
+		 			name: 'comment',
+		 			files: [
+		 				'/templates/comment/commentController.js',
+		 				'/templates/comment/comment.css'
 		 			]
 		 		}
 		 		
