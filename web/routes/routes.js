@@ -76,6 +76,16 @@ angular.module('app')
 					}]
 				}
 			})
+			.state('settle', {
+				url: '/settle/:id',
+				templateUrl: '/templates/settle/settle.html',
+				controller: 'settleController',
+				resolve: {
+					des: ['$ocLazyLoad', function ($ocLazyLoad) {
+						return $ocLazyLoad.load('settle');
+					}]
+				}
+			})
 
 
 			$locationProvider.html5Mode(true);

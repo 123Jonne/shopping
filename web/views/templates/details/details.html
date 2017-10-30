@@ -15,7 +15,7 @@
 	      <span class="subdued padding-left">库存 {{data[0].surplusCount}}</span>
 	      <span class="count-right">
 	      	<span class="fl padding-right">数量</span>
-	      	<input class="count fl" type="text" ng-model="count" />
+	      	<input class="count fl" type="text" ng-model="pdetails.count" />
 	      </span>
     	</p>
 			<p>{{data[0].desc}}</p>
@@ -24,7 +24,7 @@
 	      <span class="subdued padding-left">{{data[0].notlike}} 不喜欢</span>
     		</p>
     		<div class="button button-assertive button-outline button-small" ng-click="goPage('comment', {id: data[0].did});">查看全部评论</div>
-    		<div class="fr assertive"><span class="padding-right">总金额</span><span>￥{{count * data[0].price}}</span></div>
+    		<div class="fr assertive"><span class="padding-right">总金额</span><span>￥{{pdetails.count * data[0].price}}</span></div>
     		<div class="button button-assertive button-block" ng-click="addShopCart();">加入购物车</div>
 		</ion-item>
 	</ion-list>

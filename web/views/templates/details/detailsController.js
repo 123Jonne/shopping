@@ -1,20 +1,41 @@
 angular.module('app')
-	.controller('detailsController', ['$scope', '$timeout', '$stateParams', 'utils', 'API', function ($scope, $timeout, $stateParams, utils, API) {
+	.controller('detailsController', ['$rootScope', '$scope', '$stateParams', 'API', 'utils', function ($rootScope, $scope, $stateParams, API, utils) {
 
-$scope.count=1;
-utils.tips.showLoadTips();
-API.fetchGet('/details/'+$stateParams.id,$stateParams)
-.then(function(data){
-	$scope.data=data.data;
-console.log('data');
-utils.tips.hideLoadTips();
-})
-.catch(function(err){
-	console.log('err');
-	utils.tips.hideLoadTips();
-})
-$scope.addShopCart=function(){
-	
-}
+		utils.tips.showLoadTips();
+		API.fetchGet('/details/' + $stateParams.id, $stateParams)
+			.then(function (data) {
+				$scope.data = data.data;
 
-}])
+				$scope.pdetails = {
+					imgUrl: $scope.data[0].imgUrl,
+					pname: $scope.data[0].name,
+					price: $scope.data[0].price,
+					count: 1,
+					email: $rootScope.user.email,
+					nickname: $rootScope.user.nickname,
+					proid: $stateParams.id,
+					cartTime: ''
+				};
+
+				utils.tips.hideLoadTips();
+			})
+			.catch(function (err) {
+				console.log(err);
+				utils.tips.hideLoadTips();
+			})
+
+			$scope.addShopCart = function () {
+				$scope.pdetails.cartTime = new Date().format("yyyy-MM-dd hh:mm:ss");
+				utils.tips.showLoadTips();
+				API.fetchPut('/shopCart/' + $stateParams.id, $scope.pdetails)
+				.then(function (data) {
+					console.log(data);
+					utils.tips.hideLoadTips();
+				})
+				.catch(function (err) {
+					console.log('err ==> ', err);
+					utils.tips.hideLoadTips();
+				})
+			}
+
+	}])
