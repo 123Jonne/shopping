@@ -13,7 +13,7 @@ angular.module('app')
 					count: 1,
 					email: $rootScope.user.email,
 					nickname: $rootScope.user.nickname,
-					proid: $stateParams.id,
+					pid: $stateParams.id,
 					cartTime: ''
 				};
 
