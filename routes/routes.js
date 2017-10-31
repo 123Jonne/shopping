@@ -19,5 +19,12 @@ module.exports = function (app) {
 	app.put('/shopCart/:id', RoutesController.addShopcartController);
 
 	app.get('/settle/:id', RoutesController.settleController);
+	
+	app.post('/settle/:id', RoutesController.postsettleController);
+
+	app.get('/my', RoutesController.myController);
+	
+	app.get('/myorder', RoutesController.myorderController);
+
 
 }

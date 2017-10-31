@@ -1,0 +1,13 @@
+<ion-modal-view>
+<ion-header-bar class="bar-assertive">
+	<button class="button icon ion-ios-arrow-left button-clear" ng-click="goBack();"></button>
+	<span class="title">商品评论</span>
+	<button class="button button-assertive" ng-click="closePopover();">关闭</button>
+</ion-header-bar>
+<ion-content class="padding-horizontal padding-top">
+<textarea style="resize: none; border: 1px solid #ddd;height: 200px; width: 100%;" class="text" placeholder="输入评论内容60字以内" maxlength="60"></textarea>
+<div class="padding-top">
+<div class="=button button-assertive button-block" ng-click="confirmDisc();">确认</div>
+</div>
+</ion-content>
+</ion-modal-view>

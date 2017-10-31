@@ -1,0 +1,10 @@
+.nyorder{
+	background-color: #ccc;
+
+}
+.nyorder .disc{
+	line-height: 30px;
+}
+.nyorder .btn{
+	float: right;
+}

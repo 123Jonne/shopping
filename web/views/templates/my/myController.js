@@ -1,0 +1,14 @@
+angular.module('app')
+.controller('myController',['$scope','API','utils','$rootScope',function($scope,API,utils,$rootScope){
+	utils.tips.showLoadTips();
+	API.fetchGet('/my',{email:$rootScope.user.email})
+     .then(function(data){
+     	console.log(data);
+     	$scope.data=data.data;
+     	utils.tips.hideLoadTips();
+     })
+     .catch(function(err){
+     	console.log(err);
+     	utils.tips.hideLoadTips();
+     })
+}])
