@@ -5,9 +5,8 @@
 	<button class="button button-assertive" ng-click="closePopover();">关闭</button>
 </ion-header-bar>
 <ion-content class="padding-horizontal padding-top">
-<textarea style="resize: none; border: 1px solid #ddd;height: 200px; width: 100%;" class="text" placeholder="输入评论内容60字以内" maxlength="60"></textarea>
+<textarea style="resize: none; border: 1px solid #ddd;height: 200px; width: 100%;" class="text" placeholder="输入评论内容60字以内" maxlength="60" ng-model="comments.comment"></textarea>
 <div class="padding-top">
-<div class="=button button-assertive button-block" ng-click="confirmDisc();">确认</div>
-</div>
+	<div class="button button-assertive button-block" ng-click="confirmDisc();">确 认</div></div>
 </ion-content>
 </ion-modal-view>

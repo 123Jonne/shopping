@@ -1,17 +1,16 @@
-.home{
+.search{
 	background-color: #efefef;
-	margin-bottom: 100px;
 }
 
-.home .pro-bg{
+.search .pro-bg{
 	background-color: #fff;
 }
 
-.home .pro-info{
+.search .pro-info{
 	overflow: hidden;
 }
 
-.home .pro-info>.fl{
+.search .pro-info>.fl{
 	float: left;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -19,12 +18,12 @@
 	width: 50%;
 }
 
-.home .pro-info>.fr{
+.search .pro-info>.fr{
 	float: right;
 	max-width: 50%;
 }
 
-.home .pro-desc{
+.search .pro-desc{
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;

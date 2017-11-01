@@ -79,6 +79,13 @@ app.config(["$provide", "$compileProvider", "$controllerProvider", "$filterProvi
 		 				'/templates/myorder/myorderController.js',
 		 				'/templates/myorder/myorder.css'
 		 			]
+		 		},
+		 		{
+		 			name: 'search',
+		 			files: [
+		 				'/templates/search/searchController.js',
+		 				'/templates/search/search.css'
+		 			]
 		 		}
 		 		
 		 		

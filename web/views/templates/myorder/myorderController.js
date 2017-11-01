@@ -3,7 +3,9 @@ angular.module('app')
 
     $scope.isNotHas = true;
 
-    $scope.isDisc = false;
+    $scope.comments = {
+      comment: ''
+    };
 
     utils.tips.initPopover($scope);
 
@@ -22,9 +24,19 @@ angular.module('app')
         utils.tips.hideLoadTips();
       })
 
-
-      $scope.discussion = function (e) {
-        utils.tips.openPopover($scope, e);
+      $scope.discussion = function (item,index) {
+        utils.tips.openPopover($scope);
+        $scope.comments.comment = '';
+        $scope.datas = {
+          index:index,
+          cartid: item.cartid,
+          pname: item.pname,
+          content: '',
+          email: $rootScope.user.email,
+          nickname:  $rootScope.user.nickname,
+          commentTime: new Date().format('yyyy-MM-dd hh:mm:ss'),
+          did: item.pid
+        }
       }
 
       $scope.closePopover = function () {
@@ -32,7 +44,31 @@ angular.module('app')
       }
 
       $scope.confirmDisc = function () {
-        utils.tips.closePopover($scope);
+        utils.tips.showLoadTips();
+        $scope.datas.content = $scope.comments.comment
+        API.fetchPost('/updatecomment/' + $scope.datas.did, $scope.datas)
+        .then(function (data) {
+
+          API.fetchPost('/updateShopcart/' + $scope.datas.cartid, {
+            cartid: $scope.datas.cartid,
+            email: $rootScope.user.email
+          })
+          .then(function (d) {
+            utils.tips.hideLoadTips();
+            utils.tips.closePopover($scope);
+            /*utils.tips.showTips(d.data.msg, $scope);*/
+           $scope.data[$scope.datas.index].commentstatus = 1;
+          })
+          .catch(function (err) {
+            console.log(err);
+          })
+
+        })
+        .catch(function (err) {
+          console.log(err);
+          utils.tips.hideLoadTips();
+        })
+        
       }
 
   }])

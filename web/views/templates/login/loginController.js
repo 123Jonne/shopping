@@ -15,10 +15,13 @@ angular.module('app')
 				.then(function (data) {
 					utils.tips.hideLoadTips();
 					showTips(data.data.msg);
-					$timeout(function () {
+					if(data.data.code===200){
+						$timeout(function () {
 						$scope.tips.close();
 						$state.go('main.home');
-					}, 3000);
+					}, 1000);
+					}
+					
 				})
 				.catch(function (err) {
 					console.log(err);

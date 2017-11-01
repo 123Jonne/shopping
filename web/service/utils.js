@@ -46,6 +46,7 @@ angular.module('app')
 
 				openPopover: function (scope) {
 					scope.popover.show();
+					
 				},
 
 				closePopover: function (scope) {

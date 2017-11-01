@@ -107,6 +107,16 @@ angular.module('app')
 					}]
 				}
 			})
+			.state('search', {
+				url: '/search',
+				templateUrl: '/templates/search/search.html',
+				controller: 'searchController',
+				resolve: {
+					des: ['$ocLazyLoad', function ($ocLazyLoad) {
+						return $ocLazyLoad.load('search');
+					}]
+				}
+			})
 
 
 
