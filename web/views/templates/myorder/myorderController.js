@@ -24,18 +24,18 @@ angular.module('app')
         utils.tips.hideLoadTips();
       })
 
-      $scope.discussion = function (item,index) {
+      $scope.discussion = function (item, index) {
         utils.tips.openPopover($scope);
         $scope.comments.comment = '';
         $scope.datas = {
-          index:index,
+          index: index,
           cartid: item.cartid,
           pname: item.pname,
           content: '',
           email: $rootScope.user.email,
           nickname:  $rootScope.user.nickname,
           commentTime: new Date().format('yyyy-MM-dd hh:mm:ss'),
-          did: item.pid
+          did: item.proid
         }
       }
 
@@ -56,8 +56,8 @@ angular.module('app')
           .then(function (d) {
             utils.tips.hideLoadTips();
             utils.tips.closePopover($scope);
-            /*utils.tips.showTips(d.data.msg, $scope);*/
-           $scope.data[$scope.datas.index].commentstatus = 1;
+            // utils.tips.showTips(d.data.msg, $scope);
+            $scope.data[$scope.datas.index].commentStatus = 1;
           })
           .catch(function (err) {
             console.log(err);

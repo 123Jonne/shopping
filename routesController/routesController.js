@@ -44,8 +44,8 @@ class RoutesController {
 		service.query(loginsql)
 			.then((result) => {
 				if (Array.isArray(result) && result.length === 1) {
-					for(var k in common.login.success){
-						result[0][k]=common.login.success[k];
+					for (var k in common.login.success) {
+						result[0][k] = common.login.success[k];
 					}
 					res.send(result);
 				} else {
@@ -128,18 +128,18 @@ class RoutesController {
 				res.send(err);
 			})
 	}
-	postsettleController(req,res){
-		let settlesql=SQL.updateOneForShopcart(req.body);
+
+	postSettleController (req, res) {
+		let settlesql = SQL.updateOneForShopcart(req.body);
 		service.query(settlesql)
-		.then((result)=>{
-			res.json({msg:'结算成功'});
-		})
-		.catch((err)=>{
-
-			res.send(err);
-		})
-
+			.then((result) => {
+				res.json({msg: '结算成功'});
+			})
+			.catch((err) => {
+				res.send(err);
+			})
 	}
+
 	myController (req, res) {
 		let myingsql = SQL.findAllForSettleBuy(req.query);
 		service.query(myingsql)
@@ -150,12 +150,13 @@ class RoutesController {
 				res.send(err);
 			})
 	}
-		myorderController (req, res) {
+
+	myorderController (req, res) {
 		let myordersql = SQL.findAllForSettleOrder(req.query);
 		service.query(myordersql)
 			.then((result) => {
 				result.forEach((v) => {
-					v.buyTime = moment(v.buyTime).format('YYYY-MM-DD HH:mm:ss');
+					v.buyTime = moment(v.buyTime).format('YYYY-MM-DD');
 				});
 				res.send(result);
 			})
@@ -163,6 +164,7 @@ class RoutesController {
 				res.send(err);
 			})
 	}
+
 	updatecommentController (req, res) {
 		let commentsql = SQL.insertOneForComment(req.body);
 		service.query(commentsql)
@@ -184,7 +186,8 @@ class RoutesController {
 				res.send(err);
 			})
 	}
-	searchController(req,res){
+
+	searchController (req, res) {
 		let searchsql = SQL.searchAllForWord(req.query);
 		service.query(searchsql)
 			.then((result) => {
@@ -194,7 +197,8 @@ class RoutesController {
 				res.send(err);
 			})
 	}
-		modiypwdController (req, res) {
+
+	modifypwdController (req, res) {
 		let modifypwdsql = SQL.findOneForModifypwd(req.query);
 		service.query(modifypwdsql)
 			.then((result) => {
@@ -206,7 +210,7 @@ class RoutesController {
 					let time = new Date().getTime().toString();
 					let randomCode = time.substr(time.length - 6, 6);
 					let mailOptions = {
-						from: '841799723@qq.com',
+						from: 'kangliuyong@126.com',
 						to: req.query.email,
 						subject: '修改密码',
 						text: '验证码',
@@ -237,6 +241,5 @@ class RoutesController {
 	}
 
 }
-
 
 module.exports = new RoutesController();

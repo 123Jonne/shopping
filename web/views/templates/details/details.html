@@ -23,7 +23,7 @@
 	      <span class="subdued">{{data[0].like}} 喜欢</span>
 	      <span class="subdued padding-left">{{data[0].notlike}} 不喜欢</span>
     		</p>
-    		<div class="button button-assertive button-outline button-small" ng-click="goPage('comment', {id: data[0].did});">查看全部评论</div>
+    		<div class="button button-assertive button-outline button-small" ng-click="goPage('comment', {id: data[0].pid});">查看全部评论</div>
     		<div class="fr assertive"><span class="padding-right">总金额</span><span>￥{{pdetails.count * data[0].price}}</span></div>
     		<div class="button button-assertive button-block" ng-click="addShopCart();">加入购物车</div>
 		</ion-item>

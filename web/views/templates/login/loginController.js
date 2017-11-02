@@ -1,8 +1,7 @@
 angular.module('app')
-	.controller('loginController', ['$rootScope','$scope', '$timeout', '$state', 'utils', 'API', function ($rootScope,$scope, $timeout, $state, utils, API) {
+	.controller('loginController', ['$rootScope', '$scope', '$timeout', '$state', 'utils', 'API', function ($rootScope, $scope, $timeout, $state, utils, API) {
 
 		$scope.data = {
-			id:'',
 			email: '',
 			pwd: ''
 		};
@@ -16,15 +15,15 @@ angular.module('app')
 				.then(function (data) {
 					utils.tips.hideLoadTips();
 					showTips(data.data[0].msg);
-					if(data.data[0].code===200){
-						$rootScope.user.uid=data.data[0].uid;
-						$rootScope.user.email=data.data[0].email;
-						$rootScope.user.nickname=data.data[0].nickname;
+					if (data.data[0].code === 200) {
+						$rootScope.user.uid = data.data[0].uid;
+						$rootScope.user.email = data.data[0].email;
+						$rootScope.user.nickname = data.data[0].nickname;
 
 						$timeout(function () {
-						$scope.tips.close();
-						$state.go('main.home');
-					}, 1000);
+							$scope.tips.close();
+							$state.go('main.home');
+						}, 1000);
 					}
 					
 				})

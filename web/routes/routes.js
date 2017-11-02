@@ -119,7 +119,7 @@ angular.module('app')
 			})
 			.state('modifypwd', {
 				url: '/modifypwd',
-				templateUrl: '/templates/modifypwd/search.html',
+				templateUrl: '/templates/modifypwd/modifypwd.html',
 				controller: 'modifypwdController',
 				resolve: {
 					des: ['$ocLazyLoad', function ($ocLazyLoad) {

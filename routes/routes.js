@@ -20,7 +20,7 @@ module.exports = function (app) {
 
 	app.get('/settle/:id', RoutesController.settleController);
 	
-	app.post('/settle/:id', RoutesController.postsettleController);
+	app.post('/settle/:id', RoutesController.postSettleController);
 
 	app.get('/my', RoutesController.myController);
 	
@@ -32,7 +32,7 @@ module.exports = function (app) {
 
     app.get('/search/:id', RoutesController.searchController);
     
-     app.get('/modifypwd', RoutesController.modiypwdController);
+    app.get('/modifypwd', RoutesController.modifypwdController);
 
     app.post('/modifypwd', RoutesController.modifynewpwdController);
 

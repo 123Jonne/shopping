@@ -1,5 +1,5 @@
 angular.module('app')
-	.controller('modifypwdController', ['$scope','$timeout', '$state', 'API', 'utils', function ($scope, $timeout,$state, API, utils) {
+	.controller('modifypwdController', ['$scope', '$state', '$timeout', 'API', 'utils', function ($scope, $state, $timeout, API, utils) {
 		$scope.domStatus = {
 			emailStatus: true,
 			validCodeStatus: true,
@@ -59,12 +59,12 @@ angular.module('app')
 				return;
 			}
 
-			API.fetchPost('/modifypwd', {pwd: $scope.data.newpwd, email: $scope.data.email})
+			API.fetchPost('/modifynewpwd', {pwd: $scope.data.newpwd, email: $scope.data.email})
 				.then(function (data) {
 					utils.tips.showTips(data.data.msg, $scope);
 					$timeout(function () {
-							$scope.tips.close();
-							$state.go('login');
+						$scope.tips.close();
+						$state.go('login');
 					}, 1000);
 				})
 				.catch(function (err) {
