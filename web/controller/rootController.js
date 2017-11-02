@@ -2,9 +2,9 @@ angular.module('app')
 	.controller('rootController', ['$rootScope', '$state', function ($rootScope, $state) {
 
 		$rootScope.user = {
-			uid: 7,
-			nickname: 'LMJA',
-			email: '1804045852@qq.com'
+			uid: '',
+			nickname: '',
+			email: ''
 		};
 
 		$rootScope.goPage = function (stateName, params) {

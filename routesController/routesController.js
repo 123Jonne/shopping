@@ -40,14 +40,14 @@ class RoutesController {
 
 	loginController (req, res) {
 		utils.addCrypto(req.body, 'pwd');
-		console.log('req.body ==> ', req.body);
 		let loginsql = SQL.findOneForLogin(req.body);
-		console.log('loginsql ==> ', loginsql);
 		service.query(loginsql)
 			.then((result) => {
-				console.log('result ...==> ', result);
 				if (Array.isArray(result) && result.length === 1) {
-					res.send(common.login.success);
+					for(var k in common.login.success){
+						result[0][k]=common.login.success[k];
+					}
+					res.send(result);
 				} else {
 					res.send(common.login.warning);
 				}
@@ -189,6 +189,47 @@ class RoutesController {
 		service.query(searchsql)
 			.then((result) => {
 				res.send(result);
+			})
+			.catch((err) => {
+				res.send(err);
+			})
+	}
+		modiypwdController (req, res) {
+		let modifypwdsql = SQL.findOneForModifypwd(req.query);
+		service.query(modifypwdsql)
+			.then((result) => {
+				console.log(result);
+				if (result.length === 0) {
+					res.json({msg: '用户不存在', code: 0})
+				} else {
+					//随机生6为验证码
+					let time = new Date().getTime().toString();
+					let randomCode = time.substr(time.length - 6, 6);
+					let mailOptions = {
+						from: '841799723@qq.com',
+						to: req.query.email,
+						subject: '修改密码',
+						text: '验证码',
+						html: '<b>您的验证码是: ' + randomCode + '</b>'
+					};
+
+					utils.sendMail(mailOptions, function () {
+						res.json({msg: '获取验证码成功, 请查收邮件', code: 1, validCode: randomCode});
+					})
+				}
+				
+			})
+			.catch((err) => {
+				res.json({msg: '获取验证码失败'});
+			})
+	}
+
+	modifynewpwdController (req, res) {
+		utils.addCrypto(req.body, 'pwd');
+		let modifynewpwdsql = SQL.findOneForModifynewpwd(req.body);
+		service.query(modifynewpwdsql)
+			.then((result) => {
+				res.json({msg: '密码修改成功'});
 			})
 			.catch((err) => {
 				res.send(err);

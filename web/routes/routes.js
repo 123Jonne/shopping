@@ -1,7 +1,7 @@
 angular.module('app')
 	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-		$urlRouterProvider.otherwise('/main/home');
+		$urlRouterProvider.otherwise('/login');
 
 		$stateProvider
 			.state('main', {
@@ -117,6 +117,17 @@ angular.module('app')
 					}]
 				}
 			})
+			.state('modifypwd', {
+				url: '/modifypwd',
+				templateUrl: '/templates/modifypwd/search.html',
+				controller: 'modifypwdController',
+				resolve: {
+					des: ['$ocLazyLoad', function ($ocLazyLoad) {
+						return $ocLazyLoad.load('modifypwd');
+					}]
+				}
+			})
+
 
 
 

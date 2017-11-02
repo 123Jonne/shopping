@@ -87,6 +87,13 @@ app.config(["$provide", "$compileProvider", "$controllerProvider", "$filterProvi
 		 				'/templates/search/search.css'
 		 			]
 		 		}
+		 		{
+		 			name: 'modifypwd',
+		 			files: [
+		 				'/templates/modifypwd/modifypwdController.js',
+		 				'/templates/modifypwd/modifypwd.css'
+		 			]
+		 		}
 		 		
 		 		
 		 		
