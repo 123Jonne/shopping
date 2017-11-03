@@ -19,7 +19,6 @@ angular.module('app')
 						$rootScope.user.uid = data.data[0].uid;
 						$rootScope.user.email = data.data[0].email;
 						$rootScope.user.nickname = data.data[0].nickname;
-
 						$timeout(function () {
 							$scope.tips.close();
 							$state.go('main.home');

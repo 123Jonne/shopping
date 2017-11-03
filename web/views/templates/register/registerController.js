@@ -25,7 +25,7 @@ angular.module('app')
 				})
 				.catch(function (err) {
 					utils.tips.hideLoadTips();
-					utils.tips.showTips(data.data.msg);
+					utils.tips.showTips(data.data.msg,$scope);
 				})
 
 		}
@@ -80,6 +80,22 @@ angular.module('app')
 			}
 
 			return true;
+		}
+         
+
+        $scope.getSMSCode = function () {
+			utils.tips.showLoadTips();
+			API.fetchPost('/sendSMS', {PhoneNumbers: '13415619601'})
+				.then(function (data) {
+					console.log('data ==> ', data);
+					utils.tips.hideLoadTips();
+					utils.tips.showTips(data.data.msg, $scope);
+				})
+				.catch(function (err) {
+					utils.tips.hideLoadTips();
+					utils.tips.showTips(data.data.msg, $scope);
+				})
+
 		}
 
 	}])

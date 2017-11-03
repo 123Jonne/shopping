@@ -6,7 +6,7 @@
 
 
 utils.tips.showLoadTips();
-API.fetchGet('/comment:id'+$stateParams.id,$stateParams)
+API.fetchGet('/comment/'+$stateParams.id,$stateParams)
 .then(function(data){
 	$scope.data=data.data;
 console.log('data');

@@ -46,7 +46,7 @@ angular.module('app')
 
       $scope.confirmDisc = function () {
         utils.tips.showLoadTips();
-        $scope.datas.content = $scope.comments.comment
+        $scope.datas.content = $scope.comments.comment;
         API.fetchPost('/updatecomment/' + $scope.datas.did, $scope.datas)
         .then(function (data) {
 
