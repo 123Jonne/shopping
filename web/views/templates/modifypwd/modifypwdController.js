@@ -25,7 +25,7 @@ angular.module('app')
 			utils.tips.showLoadTips();
 			API.fetchGet('/modifypwd', {email: $scope.data.email})
 				.then(function (data) {
-					console.log(data);
+					console.log('data',data);
 					utils.tips.hideLoadTips();
 					utils.tips.showTips(data.data.msg, $scope);
 					if (data.data.code === 1) {

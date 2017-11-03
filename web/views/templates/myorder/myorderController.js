@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('myorderController', ['$rootScope', '$scope', 'API', 'utils', function ($rootScope, $scope, API, utils) {
+  .controller('myorderController', ['$rootScope','$state', '$scope', 'API', 'utils', function ($rootScope,$state, $scope, API, utils) {
 
     $scope.isNotHas = true;
 
@@ -35,8 +35,9 @@ angular.module('app')
           email: $rootScope.user.email,
           nickname:  $rootScope.user.nickname,
           commentTime: new Date().format('yyyy-MM-dd hh:mm:ss'),
-          did: item.proid
+          did: item.pid
         }
+
       }
 
       $scope.closePopover = function () {
@@ -57,7 +58,7 @@ angular.module('app')
             utils.tips.hideLoadTips();
             utils.tips.closePopover($scope);
             // utils.tips.showTips(d.data.msg, $scope);
-            $scope.data[$scope.datas.index].commentStatus = 1;
+            $scope.data[$scope.datas.index].commentstatus = 1;
           })
           .catch(function (err) {
             console.log(err);

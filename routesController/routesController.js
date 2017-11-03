@@ -167,8 +167,10 @@ class RoutesController {
 
 	updatecommentController (req, res) {
 		let commentsql = SQL.insertOneForComment(req.body);
+        console.log("req.body=>",req.body);
 		service.query(commentsql)
 			.then((result) => {
+				console.log('result=>',result);
 				res.json({"msg": "评论成功"});
 			})
 			.catch((err) => {
@@ -202,7 +204,7 @@ class RoutesController {
 		let modifypwdsql = SQL.findOneForModifypwd(req.query);
 		service.query(modifypwdsql)
 			.then((result) => {
-				console.log(result);
+				console.log('result=>',result);
 				if (result.length === 0) {
 					res.json({msg: '用户不存在', code: 0})
 				} else {
@@ -210,7 +212,7 @@ class RoutesController {
 					let time = new Date().getTime().toString();
 					let randomCode = time.substr(time.length - 6, 6);
 					let mailOptions = {
-						from: 'kangliuyong@126.com',
+						from: 'lmj1804045852@126.com',
 						to: req.query.email,
 						subject: '修改密码',
 						text: '验证码',

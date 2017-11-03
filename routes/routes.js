@@ -34,7 +34,7 @@ module.exports = function (app) {
     
     app.get('/modifypwd', RoutesController.modifypwdController);
 
-    app.post('/modifypwd', RoutesController.modifynewpwdController);
+    app.post('/modifynewpwd', RoutesController.modifynewpwdController);
 
 
 
